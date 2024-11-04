@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sand in Real Life</title>
+  <style>
+#background{
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #0000ff;
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #0000ff;
+  cursor: pointer;
+}
+  </style>
+
+</head>
+<body><center>
+  <h1>Pushups in Real Life</h1>
+  <img id="background" src="sand.jpeg">
+  <br><br><br>
+  <p>Pushups Done: <span id="pushups"></span></p>
+  <br>
+  <p>Pushup Speed: <span id="demo"></span></p>
+  <div class="slidecontainer">
+    <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+  </div>
+  <br>
+  <button onclick="start();">Start</button>
+  <script>
+var pushups = 0;
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+var outpush = document.getElementById("pushups");
+output.innerHTML = slider.value;
+outpush.innerHTML = pushups;
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+function start() {
+  var pushups = 0;
+  var interval = setInterval(increase, 10);
+}
+function increase() {
+  pushups = pushups + Number(slider.value);
+  if (pushups > 7800) {
+    pushups = 7800;
+    outpush.innerHTML = pushups;
+    clearInterval('interval');
+  }
+  outpush.innerHTML = pushups;
+}
+  </script>
+</center></body>
+</html>
